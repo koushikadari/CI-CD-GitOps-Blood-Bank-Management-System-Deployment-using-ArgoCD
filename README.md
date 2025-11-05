@@ -46,25 +46,25 @@ The instance also has an IAM Role attached, so it can access AWS resources secur
 The Jenkins pipeline automates the entire CI process.
 Here’s what each stage does:
 
-# Clean Workspace:
-       Removes old files to ensure a fresh build environment.
+ # Clean Workspace:
+ Removes old files to ensure a fresh build environment.
 
-Checkout Code:
+# Checkout Code:
 Pulls the source code from a GitHub repository.
 
-SonarQube Analysis (SQA):
+# SonarQube Analysis (SQA):
 Uses SonarQube to analyze code for bugs, vulnerabilities, and code smells.
 
-Quality Gate Check:
+# Quality Gate Check:
 Verifies the SonarQube analysis result — if the quality standards fail, the pipeline can be stopped or marked unstable.
 
-Docker Image Build:
+# Docker Image Build:
 Builds Docker images for both the application and the database from the source code.
 
-Trivy Image Scan:
+# Trivy Image Scan:
 Scans the built Docker images for vulnerabilities.
 
-Push to DockerHub:
+# Push to DockerHub:
 Pushes the final, approved images to a DockerHub repository for deployment.
 
 
