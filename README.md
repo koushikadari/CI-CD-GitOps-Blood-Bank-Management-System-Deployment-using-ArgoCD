@@ -87,6 +87,64 @@ The Kubernetes cluster is created using Kops, consisting of:
 Appropriate instance types and storage sizes
 
 This cluster hosts the application and all associated services.
+# ☸️ Step 4: Kubernetes Manifests
+
+@ created two files for exposing the application and running the application
+
+@ 1️⃣ Service: Exposing the application
+
+@ Explanation for service file
+
+@ apiVersion: v1
+
+Specifies this is a Kubernetes core resource (Service is a core object).
+
+@ kind: Service
+
+This defines a Service, which is used to expose pods inside or outside the cluster.
+
+@ metadata: name: my-service
+
+The name of the service. Other resources (or users) will use this name to access the service.
+
+@ spec: type: LoadBalancer
+
+This makes the service publicly accessible (usually in cloud environments like AWS or GCP) via an external IP.
+
+@ Alternative types: ClusterIP (internal only), NodePort (exposes on a node port).
+
+@ selector: app: nginx
+
+The service will route traffic to all pods labeled with app: nginx.
+
+@ ports:
+
+$ protocol: TCP – the network protocol used.
+
+$ port: 80 – the port the service exposes externally.
+
+$ targetPort: 80 – the port on the container/pod that will receive the traffic.
+
+✅ Effect: Any request to the LoadBalancer on port 80 is forwarded to the pod(s) running app: nginx on port 80.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
