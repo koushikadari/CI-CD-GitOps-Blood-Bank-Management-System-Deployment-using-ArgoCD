@@ -67,6 +67,27 @@ Scans the built Docker images for vulnerabilities.
 # Push to DockerHub:
 Pushes the final, approved images to a DockerHub repository for deployment.
 
+# 🧰 Step 3: Kops and Kubectl Setup 
+
+A separate EC2 instance acts as the Kubernetes admin node.
+It has:
+
+Kubectl: to manage Kubernetes resources
+
+Kops: to create and manage the Kubernetes cluster on AWS
+
+The Kubernetes cluster is created using Kops, consisting of:
+
+@ Master node
+
+@ Worker nodes
+
+@ used this command for to create kops cluster kops create cluster --name koushik.k8s.local --zones=us-east-1a,us-east-1b --master-count=1 --master-size=m7i.large --master-volume-size=30  --node-count=2 --node-size=c7a.large --node-volume-size=20 --image=ami-0360c520857e3138f
+
+Appropriate instance types and storage sizes
+
+This cluster hosts the application and all associated services.
+
 
 
 
