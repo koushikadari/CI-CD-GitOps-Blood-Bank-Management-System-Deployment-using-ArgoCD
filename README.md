@@ -127,7 +127,7 @@ $ targetPort: 80 – the port on the container/pod that will receive the traffic
 
 ✅ Effect: Any request to the LoadBalancer on port 80 is forwarded to the pod(s) running app: nginx on port 80.
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# Service to expose the app
+# Service to expose the app 📂 
 apiVersion: v1
 kind: Service
 metadata:
@@ -187,7 +187,7 @@ DB_HOST=mysqldb → the application knows where to find the database.
 
 imagePullSecrets: → tells Kubernetes which secret to use if the Docker image is private (dockerhub-secret).
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# Deployment for the application
+# Deployment for the application 📂 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
