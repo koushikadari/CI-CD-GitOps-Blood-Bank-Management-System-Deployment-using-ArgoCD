@@ -3,7 +3,7 @@ CI/CD &amp; GitOps: Blood Bank Management System Deployment using ArgoCD
 
 🎯 Objective
 
->> To automate the entire software lifecycle using:
+> To automate the entire software lifecycle using:
 
 @ Jenkins for Continuous Integration (CI)
 
