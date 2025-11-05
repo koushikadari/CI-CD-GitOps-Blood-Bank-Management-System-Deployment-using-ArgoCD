@@ -127,8 +127,92 @@ $ targetPort: 80 – the port on the container/pod that will receive the traffic
 
 ✅ Effect: Any request to the LoadBalancer on port 80 is forwarded to the pod(s) running app: nginx on port 80.
 
+# Service to expose the app
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+@ 2️⃣ Deployment: Running the application
 
+explanation for Deployment file
 
+@ apiVersion: apps/v1
+
+Indicates this is part of the apps API group, used for Deployments, StatefulSets, etc.
+
+@ kind: Deployment
+
+Deployments manage replicas of pods, updates, rollbacks, and scaling.
+
+@ metadata:
+
+name: nginx-deployment – the deployment’s name.
+
+labels: app: nginx – a label to identify this deployment.
+
+@ spec:
+
+replicas: 2 → deploy 2 pods for high availability.
+
+selector: matchLabels: app: nginx → deployment manages pods that have this label.
+
+@ template:
+
+Defines the pod template used for creating pods.
+
+Inside the template:
+
+metadata: labels: app: nginx → labels applied to the pods. Must match the deployment selector.
+
+spec: containers: → defines the containers inside each pod:
+
+name: app → container name.
+
+image: kous763/clientapp:appimage → Docker image pulled from DockerHub.
+
+ports: containerPort: 80 → exposes port 80 inside the pod.
+
+env: → sets environment variables inside the container.
+
+DB_HOST=mysqldb → the application knows where to find the database.
+
+imagePullSecrets: → tells Kubernetes which secret to use if the Docker image is private (dockerhub-secret).
+
+# Deployment for the application
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: app
+        image: kous763/clientapp:appimage
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_HOST
+          value: mysqldb
+      imagePullSecrets:
+      - name: dockerhub-secret
 
 
 
