@@ -82,7 +82,7 @@ The Kubernetes cluster is created using Kops, consisting of:
 
 @ Worker nodes
 
-@ used this command for to create kops cluster kops create cluster --name koushik.k8s.local --zones=us-east-1a,us-east-1b --master-count=1 --master-size=m7i.large --master-volume-size=30  --node-count=2 --node-size=c7a.large --node-volume-size=20 --image=ami-0360c520857e3138f
+@ used this command for to create kops cluster ==  kops create cluster --name koushik.k8s.local --zones=us-east-1a,us-east-1b --master-count=1 --master-size=m7i.large --master-volume-size=30  --node-count=2 --node-size=c7a.large --node-volume-size=20 --image=ami-0360c520857e3138f
 
 Appropriate instance types and storage sizes
 
